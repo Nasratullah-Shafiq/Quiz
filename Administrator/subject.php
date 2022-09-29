@@ -2610,7 +2610,6 @@ $(function () {
 
 </script>
 
-
 <?php
 
 include(
