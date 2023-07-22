@@ -15,6 +15,7 @@ include_once($filepath . '/_Partial Components/CRUD.php');
 
 $usr = new CRUD();
 
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $Username = $_POST['Username'];
     $Password = $_POST['Password'];
