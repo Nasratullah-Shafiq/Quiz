@@ -16,7 +16,6 @@ if(isset($_GET['del'])){
    }
 }
 
-
 ?>
  <script type="text/javascript">
      window.location = "QuizHistory.php";
