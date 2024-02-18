@@ -9,8 +9,9 @@
 		$TotalNumberOfQuestion = $_POST['TotalNumberOfQuestion'];
 		$Username =  $_POST['Username'];
 		$Teacher =  $_POST['Teacher'];
-		$Subject =  $_POST['Subject'];
 		
+		$Subject =  $_POST['Subject'];
+
 		$Credit_Hours =  $_POST['Credit_Hours'];
 		$Attempted_Answer = $_POST['Attempted_Answer'];
 		$Correct_Answer = $_POST['Correct_Answer'];
