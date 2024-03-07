@@ -98,7 +98,6 @@ include('./_Partial Components/Header.php');
     Start Quiz Now
 </button>
         </div>
-        
     </div>
     <div class="myslides Myfade">
         <img src="./assets/img/IMG_8177.jpg" alt="Shs_Tech_Solutions" id = "slider">
