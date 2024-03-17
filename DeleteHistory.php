@@ -11,11 +11,12 @@ if(isset($_GET['del'])){
    if($deleteResult){
         $msg = "Quiz Result has deleted Successfully";
    }
-   
+
    else{     
         $error = "Quiz Result Not Deleted!";
    }
 }
+
 
 ?>
  <script type="text/javascript">
