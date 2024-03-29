@@ -1,7 +1,6 @@
 <?php
 
 include('./_Partial Components/Header.php');
-
 include('./_Partial Components/profile_nav.php');
 
 ?>
@@ -13,7 +12,7 @@ include('./_Partial Components/profile_nav.php');
                         echo "<h2> No Users Table exist! </h2>";
                     }
                     else{
-                        
+
 
                     if($UsersByUsername->num_rows>0){
                         $result = $UsersByUsername->fetch_array();
