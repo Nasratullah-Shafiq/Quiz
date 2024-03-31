@@ -157,7 +157,6 @@ if(isset($_POST['submit'])){
         <label class="col-md-3 col-form-label">
             <?= $lang['username']; ?>
         </label>
-
         
         <div class="col-md-9">
             <input type="text"
