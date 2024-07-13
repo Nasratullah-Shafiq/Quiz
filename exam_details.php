@@ -26,6 +26,7 @@ $Subject_ID = $_GET['id'];
             <p class="paragraph"><?= $lang['test_intellect']; ?></p>
         </div>
     </div>
+    
 </div>
 
 <!-- ===================================================
