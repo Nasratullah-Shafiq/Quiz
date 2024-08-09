@@ -13,7 +13,6 @@ include('./_Partial Components/profile_nav.php');
                     }
                     else{
 
-
                     if($UsersByUsername->num_rows>0){
                         $result = $UsersByUsername->fetch_array();
                     ?>
