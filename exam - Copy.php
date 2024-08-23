@@ -9,7 +9,6 @@ if (isset($_GET['id'])) {
     header('Location: index.php');
     exit();
 }
-
 if (isset($_SESSION['Username'])) {
     $Username = $_SESSION['Username'];
     $UsersByUsername = $exm->getUsersByUsername($Username);
