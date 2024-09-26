@@ -44,6 +44,10 @@ $exm = new Exam();
     <link href="CSS/animated.css" rel="stylesheet" >
     <!-- <link href="./CSS/bootstrap.min.css" rel="stylesheet"> -->
       
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/bootstrap.js"></script>
     <script src="./js/jquery.js" type="text/javascript" ></script>
