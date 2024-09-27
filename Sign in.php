@@ -112,6 +112,7 @@ include_once "_Partial Components/".$class.".php";
 <script src="./js/scrollspy.js"></script>
 <script src="./js/tab.js"></script>
 <script src="./js/transition.js"></script>
+<script src = "./js/OnlineQuiz.js"></script>
 <script>
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
