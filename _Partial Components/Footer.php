@@ -2,8 +2,8 @@
        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="./tests/vendor/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/tests/vendor/jquery.min.js"></script>
         <script src="./js/transition.js"></script>
         <script src="./js/tooltip.js"></script>
         <script src="./js/affix.js"></script>
@@ -19,7 +19,7 @@
         
     <footer class ="footer">
         <div class="container">
-            Copyright &copy; by <a style = "color: rgb(0,176,240)"href="http://www.salam.edu.af">Salam University</a>. All Right Reserved <?php echo date('Y');?>.
+            Copyright &copy; by <a style = "color: rgb(0,176,240)"href="http://www.salam.edu.af">Nasratullah Shafiq</a>. All Right Reserved <?php echo date('Y');?>.
         </div>
     </footer>
     </body>   
