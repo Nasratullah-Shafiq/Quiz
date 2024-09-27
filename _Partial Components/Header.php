@@ -222,7 +222,7 @@ $exm = new Exam();
       </div>
     </nav>
     <body>
-<script src = "jquery.min.js"></script>
+<script src = "./jquery.min.js"></script>
 <script src = "./../js/collapse.js"></script>
 <script src = "./../js/transition.js"></script>
 <script src = "./../js/modal.js"></script>
@@ -230,4 +230,4 @@ $exm = new Exam();
 <script src = "./../js/popover.js"></script>
 <script src = "./../js/dropdown.js"></script>
 <script src = "./../js/carousel.js"></script> 
-<script src = "./../js/OnlineQuiz.js"></script> 
+<script src = "./js/OnlineQuiz.js"></script> 
