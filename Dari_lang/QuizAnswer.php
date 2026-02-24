@@ -11,7 +11,6 @@ $answers = $answ->answer($_POST);
 if(!isset($_SESSION['Username'])){
     header('Location: sign in.php');
 }
-
 if(isset($_GET['id'])){
     $Subject_ID = $_GET['id'];
     $subjectByTime = $exm->getSubject($Subject_ID);
