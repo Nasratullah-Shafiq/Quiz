@@ -54,7 +54,6 @@ if(isset($_POST['submit'])){
         }
     }
 }
-                    
 ?>
 <div class="jumbotron" id = "jbt" style="background-image: url('./img/IBPS-Banne.jpg'); background-size: cover;">
         <div class="container">
