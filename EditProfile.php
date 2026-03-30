@@ -169,5 +169,6 @@ if(isset($_POST['submit'])){
     		</div>
     	</div>
 <?php 
+
 include('./_Partial Components/Footer.php');
 ?>    
