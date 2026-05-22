@@ -10,4 +10,5 @@
 		$addFaculties = $usr->addFaculty($Faculty, $Language);
 	
 	}
+	
 ?>
