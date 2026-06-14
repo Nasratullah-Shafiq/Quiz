@@ -1,8 +1,9 @@
-<?php
+<!-- <?php
 ob_start();
 session_start();
 $filepath = realpath(dirname(__FILE__));
 include_once($filepath.'/Database.php');
+include_once($filepath.'/lang_loader.php');
 include_once($filepath.'/conn.php');
 include_once($filepath.'/Format.php');
 include_once($filepath.'/Exam.php');
@@ -82,146 +83,224 @@ $exm = new Exam();
            
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          
-          <ul class="nav navbar-nav" id="top-navbar">
-            <li><a href="About.php" id="c"><i class="fa fa-info"></i> About </a></li>
-            <li><a href="Contact-us.php"><i class="fa fa-phone"></i> Contact Us</a></li>
-            <?php if(isset($_SESSION['Username'])){
+
+  <ul class="nav navbar-nav" id="top-navbar">
+
+    <li>
+      <a href="About.php" id="c">
+        <i class="fa fa-info"></i> <?= $lang['about']; ?>
+      </a>
+    </li>
+
+    <li>
+      <a href="Contact-us.php">
+        <i class="fa fa-phone"></i> <?= $lang['contact']; ?>
+      </a>
+    </li>
+
+    <?php if(isset($_SESSION['Username'])) {
+        $Username = $_SESSION['Username'];
+        $UsersByUsername = $exm->getUsersByUsername($Username);
+        $row = $UsersByUsername->fetch_assoc();
+
+        if($row['Role_ID']=='1'){ ?>
+          <li>
+            <a href="Administrator/index.php">
+              <i class="fa fa-list"></i> <?= $lang['manage_quiz']; ?>
+            </a>
+          </li>
+    <?php }} ?>
+
+  </ul>
+
+  <ul class="nav navbar-nav navbar-right" id="top-navbar">
+
+    <!-- LANGUAGE LABEL -->
+    <!-- LANGUAGE DROPDOWN -->
+<li class="dropdown dropdown-user">
+
+  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+
+    <span class="username">
+      <?= $lang['language']; ?>
+    </span>
+
+    <i class="fa fa-angle-down"></i>
+
+  </a>
+
+  <ul class="dropdown-menu" id="drop-down-language">
+
+    <li>
+      <a href="?lang=en" style="color:#fff;">
+        <?= $lang['english']; ?>
+      </a>
+    </li>
+
+    <li class="divider"></li>
+
+    <li>
+      <a href="?lang=fa" style="color:#fff;">
+        <?= $lang['dari']; ?>
+      </a>
+    </li>
+
+    <li class="divider"></li>
+
+    <li>
+      <a href="?lang=ps" style="color:#fff;">
+        <?= $lang['pashto']; ?>
+      </a>
+    </li>
+
+  </ul>
+
+</li>
+
+    <!-- SIGN IN -->
+    <?php if(!isset($_SESSION['Username'])) { ?>
+      <li>
+        <a href="sign in.php">
+          <img class="img-circle" width="20" height="20" src="img/placeholder-user.png" />
+          <?= $lang['sign_in']; ?>
+        </a>
+      </li>
+    <?php } ?>
+
+    <!-- USER DROPDOWN -->
+    <?php if(isset($_SESSION['Username'])) {
+
+        $Username = $_SESSION['Username'];
+        $UsersByUsername = $exm->getUsersByUsername($Username);
+        $row = $UsersByUsername->fetch_assoc();
+        $profile_img = $row['Image'];
+    ?>
+
+    <li class="dropdown dropdown-user" id="top-navbar">
+
+      <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+
+        <?php echo "<img class='img-circle' width='30' height='30' src='img/_ProfilePicture/$profile_img' />"; ?>
+
+        <span class="username">
+          <?php echo $_SESSION['Username']; ?>
+        </span>
+
+        <i class="fa fa-angle-down"></i>
+
+      </a>
+
+      <ul class="dropdown-menu dropdown-menu-default">
+
+        <li>
+          <a href="Profile.php">
+            <i class="fa fa-user"></i> <?= $lang['my_profile']; ?>
+          </a>
+        </li>
+
+        <li class="divider"></li>
+
+        <li>
+          <a href="EditProfile.php">
+            <i class="fa fa-lock"></i> <?= $lang['update_profile']; ?>
+          </a>
+        </li>
+
+        <li class="divider"></li>
+
+        <li>
+          <a href="QuizHistory.php">
+            <i class="fa fa-pencil"></i> <?= $lang['quiz_history']; ?>
+          </a>
+        </li>
+
+        <li class="divider"></li>
+
+        <li>
+          <a href="Change-Pass.php">
+            <i class="fa fa-power-off"></i> <?= $lang['change_password']; ?>
+          </a>
+        </li>
+
+        <li class="divider"></li>
+
+        <li>
+          <a href="Logout.php">
+            <i class="fa fa-power-off"></i> <?= $lang['logout']; ?>
+          </a>
+        </li>
+
+      </ul>
+
+    </li>
+
+    <?php } ?>
+
+    <!-- EXAMS -->
+    <li class="dropdown" id="Categories-btn">
+
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+        <i class="fa fa-list-alt"></i> <?= $lang['exams']; ?>
+        <span class="caret"></span>
+
+      </a>
+
+      <ul class="dropdown-menu">
+
+        <?php include_once('conn.php'); ?>
+
+        <nav class="nav-top-side">
+
+        <?php if(isset($_GET['id'])) { ?>
+          <a href="index.php"><i class='fa fa-home'></i> <?= $lang['home']; ?></a>
+        <?php } else { ?>
+          <a class="active" href="index.php"><i class='fa fa-home'></i> <?= $lang['home']; ?></a>
+        <?php } ?>
+
+        <?php
+        if(isset($_SESSION['Username'])) {
             $Username = $_SESSION['Username'];
             $UsersByUsername = $exm->getUsersByUsername($Username);
-            $row = $UsersByUsername->fetch_assoc();
-            if($row['Role_ID']=='1'){?> 
-            <li><a href="Administrator/index.php"><i class="fa fa-list"></i> Manage Quizes</a></li>
-            <?php }}?>
-          </ul>
-          <ul class="nav navbar-nav navbar-right" id = "top-navbar">
-          <li class="dropdown dropdown-user">
-                    <a href="javascrip:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <span class="username"> Language </span>
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu" id="drop-down-language">
-                        <li >
-                            <a href="index.php" style="color: #fff;">
-                                English </a>
-                        </li>
-                        <li class="divider"> </li>
-                        <li>
-                          <a href="Dari/index.php" style="color: #fff;">
-                              Dari  </a>
-                        </li>
-                    </ul>
-                </li>
-              <?php
-            if(!isset($_SESSION['Username'])){?>
-            <li><a href="sign in.php"><img alt="" class="img-circle" width="20px;" height = "20px" src="img/placeholder-user.png" /> sign in </a></li>
-            	<?php }?>
-            <li class="dropdown">
-             
-            <?php if(isset($_SESSION['Username'])){ 
-                $Username = $_SESSION['Username'];
-                $UsersByUsername = $exm->getUsersByUsername($Username);
-                $row = $UsersByUsername->fetch_assoc();
-                $profile_img = $row['Image'];
-            ?>
+            $rows = $UsersByUsername->fetch_assoc();
+        }
 
-            <li class="dropdown dropdown-user" id = "top-navbar">
-                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    
-                    <?php echo "<img alt='' class='img-circle' width='30px;' height = '30px' src='img/_ProfilePicture/$profile_img ' style = 'margin-top: -5px; margin-bottom: -5px;' />"; ?>
-                      	<span class="username username-hide-on-mobile"> 
-                      	<?php echo $_SESSION['Username']; ?> </span>
-                      	<i class="fa fa-angle-down"></i>
-                  	</a>
-                  	<ul class="dropdown-menu dropdown-menu-default" id="dropdown-profile-en">
-                      	<li >
-                        	<a id = "dropdown-profile" href="Profile.php" style="color: #fff;">
-                          	<i class="fa fa-user" ></i> My Profile </a>
-                      	</li>
-                           <li class="divider li-dropdown"> </li>
-                        <li class="li-dropdown">
-                            <a id = "dropdown-profile-en" href="EditProfile.php" style="color: #fff;">
-                            <i class="fa fa-lock" ></i> Update Profile </a>
-                        </li>
-                        <li class="divider li-dropdown"> </li>
-                        <li class="li-dropdown">
-                        	<a id = "dropdown-profile-en" href="QuizHistory.php" style="color: #fff;"> 
-                            <i class="fa fa-pencil" ></i> View Quiz History </a>
-                        </li>
-                        <li class="divider"> </li>
-                        <li class="li-dropdown">
-                            <a id = "dropdown-profle-en" href="Change-Pass.php" style="color: #fff;">
-                            <i class="fa fa-power-off"></i> Change Password </a>
-                        </li> 
-                        <li class="divider li-dropdown"> </li>
+        $allSubject = $exm->getSubjects();
 
-                        <li>
-                            <a id = "dropdown-profle-en" href="Logout.php" style="color: #fff;">
-                            <i class="fa fa-power-off"></i> Log Out </a>
-                        </li>
-                        
-                  	</ul>
-              	</li>
-          	<?php } ?>
+        if($rows['Status']=='1'){
 
-          	<li class="dropdown" id="Categories-btn">
-              	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-alt"></i> Exams <span class="caret"></span></a>
-              	<ul class="dropdown-menu">
-                	<?php
-               
-                	include_once('conn.php');
-      
-                	?>
-                <nav class="nav-top-side"> 
-                <?php
-                    if(isset($_GET['id'])){ ?>
-                    <a  href="index.php"> <i class='fa fa-home'></i> Home</a>
+            if($allSubject->num_rows>0){
 
-                    <?php }
-                    else{ ?>
-                      <a class = "active" href="index.php"> <i class='fa fa-home'></i> Home</a>
-                     
-                    <?php }?>
-                    
-                    <?php 
-                    if(isset($_SESSION['Username'])){ 
-                        $Username = $_SESSION['Username'];
-                        $UsersByUsername = $exm->getUsersByUsername($Username);
-                        $rows = $UsersByUsername->fetch_assoc();
-                    }
-                        $allSubject = $exm->getSubjects();
-                        if($rows['Status']=='1'){
-                            if($allSubject->num_rows>0){
-                        
-                            while($row = $allSubject->fetch_assoc()){
-                                if(isset($_GET['id']) && $row['Subject_ID']==$_GET['id']){
-                                    $SubjectID = $row['Subject_ID'];
-                                    $subject = $row['Subject'];
-                                    echo "<a class = 'active' href = 'ExamDetails.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
-                                }
-                                else{
-                                    $SubjectID = $row['Subject_ID'];
-                                    $subject = $row['Subject'];
-                                    echo "<a  href = 'ExamDetails.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
-                                }
-                            }
-                        }
-                    }
-                        else{
-                            echo "<center> <h3><p> No Subjects Yet </p></h3> </center>";
-                        }
-                    ?>
-                </nav>
+                while($row = $allSubject->fetch_assoc()){
 
-              </ul>
-          </li>
-          
-          </ul>
+                    $SubjectID = $row['Subject_ID'];
+                    $subject = $row['Subject'];
 
-        </div><!--/.nav-collapse -->
+                    $active = (isset($_GET['id']) && $_GET['id'] == $SubjectID) ? "active" : "";
+
+                    echo "<a class='$active' href='ExamDetails.php?id=$SubjectID'>
+                            <i class='fa fa-list'></i> $subject Quiz
+                          </a>";
+                }
+            }
+
+        } else {
+            echo "<center><h3>No Subjects Yet</h3></center>";
+        }
+        ?>
+
+        </nav>
+
+      </ul>
+
+    </li>
+
+  </ul>
+
+</div>
       </div>
     </nav>
-    <body>
+    <body> 
 <!-- <script src = "./jquery.min.js"></script>
 <script src = "./../js/collapse.js"></script>
 <script src = "./../js/transition.js"></script>
