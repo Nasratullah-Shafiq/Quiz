@@ -1,6 +1,6 @@
-<!-- <?php
+ <?php
 ob_start();
-session_start();
+// session_start();
 $filepath = realpath(dirname(__FILE__));
 include_once($filepath.'/Database.php');
 include_once($filepath.'/lang_loader.php');
@@ -21,40 +21,30 @@ $exm = new Exam();
 // }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?= $lang_code ?>" dir="<?= $direction ?>">
 <head>
-	<title></title>
+	<title>Online Quiz System</title>
   
     <meta charset="utf-16">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <link href ="./CSS/bootstrap.min.css" rel=" stylesheet">
-    <link href ="./CSS/bootstrap.css" rel=" stylesheet" />
-    <link href="./CSS/animated.css" rel="stylesheet" >
-    <link href = "./CSS/Online_Quiz_Style.css" rel = "Stylesheet" type = "text/css"/>
-    <link href = "./CSS/MyCarousel.css" rel = "Stylesheet" type = "text/css"/>
-    <!-- <link href ="./CSS/bootstrap-theme.css" rel=" stylesheet"> -->
-    <!-- <link href ="./CSS/bootstrap-theme.min.css" rel=" stylesheet"> -->
+    <!-- CSS -->
+    <link href="assets/CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/CSS/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/CSS/animated.css" rel="stylesheet">
+    <link href="assets/CSS/Online_Quiz_Style.css" rel="stylesheet">
+    <link href="assets/CSS/MyCarousel.css" rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link href="img/Graduation Cap_48px.png" rel="icon" type="image/png" >
-    <link href="CSS/font-awesome.css" rel="stylesheet" >
-    <link href="CSS/font-awesome.min.css" rel="stylesheet" >
-    <link href="CSS/animated.css" rel="stylesheet" >
-    <!-- <link href="./CSS/bootstrap.min.css" rel="stylesheet"> -->
-      
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <script src="js/bootstrap.min.js"></script>
-    <script src="./js/bootstrap.js"></script>
-    <script src="js/jquery.js" type="text/javascript" ></script>
-    <script src="./jquery.js" type="text/javascript" ></script>
-    <script src = "js/OnlineQuiz.js"></script>
-    <script src = "jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/OnlineQuiz.js"></script>
    
 
       <script type="text/javascript">
@@ -67,6 +57,7 @@ $exm = new Exam();
 
 </head>
 <body onload = "timeout()">
+  
     <nav class="navbar navbar-inverse navbar-static-top" style = "background-color: rgb(0,112,192); border: none;">
       <div class="container">
         <div class="navbar-header" style = "">
@@ -77,8 +68,10 @@ $exm = new Exam();
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="index.php">
-          <div class = "col-xs-3" id = "img-cup"><img src="img/Graduation Cap_52px.png" alt="Logo" width="30px"></div>
-          <div class = "col-xs-9" id = "div-quiz">Online Quiz</div> 
+          <div class = "col-xs-3" id = "img-cup"><img src="assets/img/Graduation Cap_52px.png" alt="Logo" width="30px"></div>
+          <div class="col-xs-9" id="div-quiz">
+    <?= $lang['online_quiz']; ?>
+</div> 
           </a>
            
         </div>
@@ -122,7 +115,13 @@ $exm = new Exam();
   <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
 
     <span class="username">
-      <?= $lang['language']; ?>
+      <?= $lang['language']; ?> :
+
+      <?php
+        if ($lang_code == 'en') echo $lang['english'];
+        elseif ($lang_code == 'fa') echo $lang['dari'];
+        elseif ($lang_code == 'ps') echo $lang['pashto'];
+      ?>
     </span>
 
     <i class="fa fa-angle-down"></i>
@@ -133,7 +132,7 @@ $exm = new Exam();
 
     <li>
       <a href="?lang=en" style="color:#fff;">
-        <?= $lang['english']; ?>
+        🇺🇸 <?= $lang['english']; ?>
       </a>
     </li>
 
@@ -141,7 +140,7 @@ $exm = new Exam();
 
     <li>
       <a href="?lang=fa" style="color:#fff;">
-        <?= $lang['dari']; ?>
+        🇦🇫 <?= $lang['dari']; ?>
       </a>
     </li>
 
@@ -149,7 +148,7 @@ $exm = new Exam();
 
     <li>
       <a href="?lang=ps" style="color:#fff;">
-        <?= $lang['pashto']; ?>
+        🇦🇫 <?= $lang['pashto']; ?>
       </a>
     </li>
 
@@ -180,7 +179,7 @@ $exm = new Exam();
 
       <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
 
-        <?php echo "<img class='img-circle' width='30' height='30' src='img/_ProfilePicture/$profile_img' />"; ?>
+        <?php echo "<img class='img-circle' width='30' height='30' src='assets/img/_ProfilePicture/$profile_img' />"; ?>
 
         <span class="username">
           <?php echo $_SESSION['Username']; ?>
@@ -300,15 +299,4 @@ $exm = new Exam();
 </div>
       </div>
     </nav>
-    <body> 
-<!-- <script src = "./jquery.min.js"></script>
-<script src = "./../js/collapse.js"></script>
-<script src = "./../js/transition.js"></script>
-<script src = "./../js/modal.js"></script>
-<script src = "./../js/tooltip.js"></script>
-<script src = "./../js/popover.js"></script>
-<script src = "./../js/dropdown.js"></script>
-<script src = "./../js/carousel.js"></script> 
-<script src = "./js/OnlineQuiz.js"></script> 
-<script src = "./js/jquery.js"></script>
-<script src = "./js/bootstrap.min.js"></script> -->
+
