@@ -3,11 +3,16 @@
 include('./_Partial Components/Header.php');
 
 ?>
-<div class="jumbotron" id = "jbt" style="background-image: url('./img/IBPS-Banne.jpg'); background-size: cover;">
+<div class="jumbotron" id = "jbt" style="background-image: url('./assets/img/IBPS-Banne.jpg'); background-size: cover;">
         <div class="container">
             <div id="details" class="animated fadeInLeft">
-                <h1> CONTACT <span> US </span>  </h1>
-                <p class = "paragraph">Tell us any suggestion</p>
+                <h1>
+                    <?= $lang['contact_us']; ?>
+                </h1>
+
+                <p class="paragraph">
+                    <?= $lang['contact_suggestion']; ?>
+                </p>
             </div>
         </div>
     </div>
