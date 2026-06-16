@@ -6,15 +6,15 @@ include_once($filepath.'/Database.php');
 include_once($filepath.'/lang_loader.php');
 include_once($filepath.'/conn.php');
 include_once($filepath.'/Format.php');
-include_once($filepath.'/Exam.php');
-include_once($filepath.'/Users.php');
+include_once($filepath.'/Method.php');
+include_once($filepath.'/CRUD.php');
 spl_autoload_register(function($class){
 include_once "_Partial Components/".$class.".php";
 });
 $db = new Database();
 $fm = new Format();
-$usr = new Users();
-$exm = new Exam();
+$usr = new CRUD();
+$exm = new Method();
 
 // if(!isset($_SESSION['Username'])){
 //     header('Location: sign in.php');
@@ -29,22 +29,26 @@ $exm = new Exam();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link rel="icon" type="image/png" href="./assets/img/Graduation Cap_48px.png">
 
     <!-- CSS -->
     <link href="assets/CSS/bootstrap.min.css" rel="stylesheet">
     <link href="assets/CSS/font-awesome.min.css" rel="stylesheet">
     <link href="assets/CSS/animated.css" rel="stylesheet">
-    <link href="assets/CSS/Online_Quiz_Style.css" rel="stylesheet">
+    <link href="assets/CSS/online_quiz_style.css" rel="stylesheet">
     <link href="assets/CSS/MyCarousel.css" rel="stylesheet">
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
     <!-- Bootstrap JS -->
     <script src="assets/js/bootstrap.min.js"></script>
 
     <!-- Custom JS -->
     <script src="assets/js/OnlineQuiz.js"></script>
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/tests/vendor/js/jquery.min.js"></script>
    
 
       <script type="text/javascript">
@@ -80,13 +84,13 @@ $exm = new Exam();
   <ul class="nav navbar-nav" id="top-navbar">
 
     <li>
-      <a href="About.php" id="c">
+      <a href="about.php" id="c">
         <i class="fa fa-info"></i> <?= $lang['about']; ?>
       </a>
     </li>
 
     <li>
-      <a href="Contact-us.php">
+      <a href="contact_us.php">
         <i class="fa fa-phone"></i> <?= $lang['contact']; ?>
       </a>
     </li>
@@ -159,8 +163,8 @@ $exm = new Exam();
     <!-- SIGN IN -->
     <?php if(!isset($_SESSION['Username'])) { ?>
       <li>
-        <a href="sign in.php">
-          <img class="img-circle" width="20" height="20" src="img/placeholder-user.png" />
+        <a href="sign_in.php">
+          <img class="img-circle" width="20" height="20" src="assets/img/placeholder-user.png" />
           <?= $lang['sign_in']; ?>
         </a>
       </li>
@@ -277,7 +281,7 @@ $exm = new Exam();
 
                     $active = (isset($_GET['id']) && $_GET['id'] == $SubjectID) ? "active" : "";
 
-                    echo "<a class='$active' href='ExamDetails.php?id=$SubjectID'>
+                    echo "<a class='$active' href='exam_details.php?id=$SubjectID'>
                             <i class='fa fa-list'></i> $subject Quiz
                           </a>";
                 }
