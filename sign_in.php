@@ -1,35 +1,9 @@
 <?php
-ob_start();
-// $filepath = realpath(dirname(__FILE__));
-include_once('./_Partial Components/Database.php');
-include_once('./_Partial Components/Format.php');
 
-include_once('./_Partial Components/CRUD.php');
-spl_autoload_register(function($class){
-include_once "_Partial Components/".$class.".php";
-});
+include_once('./_Partial Components/link.php');
 
 ?>
-<!DOCTYPE html>
-<title> Sign in </title>
-<head> 
-  <meta name="viewport" content=" width=device-width, initial-scale=1" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/signin_style.css">
-    <link rel="stylesheet" href="./assets/css/animated.css">
-    <link rel="stylesheet" href="./assets/css/font-awesome.css">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="./assets/img/Graduation Cap_48px.png">
-
-    <!-- JavaScript -->
-    <script src="./assets/js/jquery.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
-    <!-- <script src="./assets/tests/vendor/js/jquery.min.js"></script> -->
-    <script src="assets/js/OnlineQuiz.js"></script>
-
-</head>
 <body class="body"> 
 <script type="text/javascript">
   
@@ -69,9 +43,7 @@ include_once "_Partial Components/".$class.".php";
         <button type="button" class="btn-signup-next" data-toggle="tooltip" id = "btn-signin" value = "Login here" data-placement="right" title="Insert Email & Password to Sign in">Sign in
             <i class='fa fa-user'></i>
         </button>
-        <button class="btn-signup-next" data-toggle="tooltip" id = "btn-test">click me !
-            <i class='fa fa-user'></i>
-        </button>
+        
   </div>
 
       
@@ -85,30 +57,7 @@ include_once "_Partial Components/".$class.".php";
   </div>
   <div class = "message" style="background-color: red;"> </div>
 </form>
-        <script type="text/javascript">
-            // $(document).ready(function () {
 
-            //     $("#btn-signin").click(function () {
-
-            //         var Username = $("#Username").val().trim();
-            //         var Password = $("#Password").val().trim();
-
-            //         if (Username === "") {
-            //             alert("Username is empty");
-            //             return false;
-            //         }
-
-            //         if (Password === "") {
-            //             alert("Password is empty");
-            //             return false;
-            //         }
-
-            //         alert("Username: " + Username + "\nPassword: " + Password);
-
-            //     });
-
-            // });
-        </script>
 
 <div class = "form_footer">
     <div class="row">
@@ -123,9 +72,9 @@ include_once "_Partial Components/".$class.".php";
         </div>
     </div>
 <!-- <hr style = "width: 100%;"> -->
-<label> <a href = "forgot-password.php" > forgot Password?</a> </label> 
+<label> <a href = "forgot_password.php" > forgot Password?</a> </label> 
 <p class="signin-footer"> Don't have account yet?</p>
-<a href = "signup.php" class="create-account"> Create an acount? </a>
+<a href = "sign_up.php" class="create-account"> Create an acount? </a>
 
 </div>
 </div>
