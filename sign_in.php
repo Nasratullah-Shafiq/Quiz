@@ -78,78 +78,7 @@ include_once('./_Partial Components/link.php');
 
 </div>
 </div>
-<script type="text/javascript">
-        $(document).ready(function () {
 
-                $("#btn-test").click(function () {
-                    alert("Button clicked is clicked you won the game!");
-                });
-                
- $("#btn-signin").click(function () {
-
-    var Username = $("#Username").val().trim();
-    var Password = $("#Password").val().trim();
-
-    // Check empty fields first
-    if (Username === "" || Password === "") {
-        $(".empty").show();
-
-        setTimeout(function () {
-            $(".empty").fadeOut();
-        }, 5000);
-
-        $(".incorrect").hide();
-        $(".disable").hide();
-        $(".error").hide();
-        $(".failed").hide();
-
-        return false; // Stop execution
-    }
-
-    $.ajax({
-        type: "POST",
-        url: "getLogin.php",
-        data: {
-            Username: Username,
-            Password: Password
-        },
-        success: function (data) {
-
-            if ($.trim(data) == "incorrect") {
-                $(".incorrect").show();
-                setTimeout(function () {
-                    $(".incorrect").fadeOut();
-                }, 5000);
-            }
-            else if ($.trim(data) == "failed") {
-                $(".failed").show();
-                setTimeout(function () {
-                    $(".failed").fadeOut();
-                }, 5000);
-            }
-            else if ($.trim(data) == "disable") {
-                $(".disable").show();
-                setTimeout(function () {
-                    $(".disable").fadeOut();
-                }, 5000);
-            }
-            else if ($.trim(data) == "error") {
-                $(".error").show();
-                setTimeout(function () {
-                    $(".error").fadeOut();
-                }, 5000);
-            }
-            else {
-                // Successful login
-                window.location.href = "index.php";
-            }
-        }
-    });
-
-    return false;
-});
-                
-        </script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/OnlineQuiz.js"></script>
