@@ -2,35 +2,10 @@
 
 ob_start();
 
-include('./_Partial Components/Conn.php');
-
-define('ROOT_PATH', __DIR__);
-
-include_once ROOT_PATH . '/_Partial Components/Database.php';
-include_once ROOT_PATH . '/_Partial Components/Format.php';
-include_once ROOT_PATH . '/_Partial Components/Users.php';
-
-spl_autoload_register(function($class){
-    include_once __DIR__ . "/_Partial Components/$class.php";
-});
+include('./_Partial Components/link.php');
 
 ?>
 
-<!DOCTYPE html>
-<html>
-
-<head> 
-   <meta name="viewport" content=" width=device-width, initial-scale=1" />
-   <link href = "./assets/CSS/signin-style.css" rel = "Stylesheet" type = "text/css"/>
-   <link href ="./assets/css/bootstrap.min.css" rel=" stylesheet" />
-   
-   <link href ="./assets/css/bootstrap.css" rel=" stylesheet" />
-   <script src="./assets/js/bootstrap.min.js"></script>
-   <script src="./assets/js/bootstrap.js"></script>
-   <script src="./js/jquery.js" type="text/javascript" ></script>
-   <script src = "./assets/js/OnlineQuiz.js"></script>
-
-</head>
 <body class = "body"> 
 
     <div class = "col-sm-3 box-signup" id="signup-form">
