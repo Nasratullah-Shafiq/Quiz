@@ -36,12 +36,12 @@ include('./_Partial Components/Header.php');
                         if(isset($_GET['id']) && $row['Subject_ID']==$_GET['id']){
                             $SubjectID = $row['Subject_ID'];
                             $subject = $row['Subject'];
-                            echo "<a class = 'active' href = 'ExamDetails.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
+                            echo "<a class = 'active' href = 'exam_details.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
                         }
                         else{
                             $SubjectID = $row['Subject_ID'];
                             $subject = $row['Subject'];
-                            echo "<a  href = 'ExamDetails.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
+                            echo "<a  href = 'exam_details.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
                         }
                     }
                 }
@@ -65,7 +65,7 @@ include('./_Partial Components/Header.php');
 
     <div class="slideshow-container">
     <div class="myslides Myfade">
-        <img src="./img/proyectos-de-e-learning.jpg" alt="Shs_Tech_Solutions" id = "slider">
+        <img src="./assets/img/proyectos-de-e-learning.jpg" alt="Shs_Tech_Solutions" id = "slider">
         <div class="text">
             <h1> Online Quiz System </h1>
             <button type="buttom" class="btn-send" data-toggle="modal" data-target="#myModal"> Start Quiz Now </button>
@@ -73,7 +73,7 @@ include('./_Partial Components/Header.php');
         
     </div>
     <div class="myslides Myfade">
-        <img src="./img/IMG_8177.jpg" alt="Shs_Tech_Solutions" id = "slider">
+        <img src="./assets/img/IMG_8177.jpg" alt="Shs_Tech_Solutions" id = "slider">
         <div class="text">
             <h1> Online Quiz System </h1>
             <button type="buttom" class="btn-send" data-toggle="modal" data-target="#myModal"> Start Quiz Now </button>
@@ -81,7 +81,7 @@ include('./_Partial Components/Header.php');
         </div>
     </div>
     <div class="myslides Myfade">
-        <img src="./img/banner.png" alt="Shs_Tech_Solutions" id = "slider"/>
+        <img src="./assets/img/banner.png" alt="Shs_Tech_Solutions" id = "slider"/>
         <div class="text">
             <h1> Online Quiz System </h1>
              <button type="buttom" class="btn-send" data-toggle="modal" data-target="#myModal"> Start Quiz Now </button>
@@ -89,19 +89,21 @@ include('./_Partial Components/Header.php');
         </div>
     </div>
     <div class="myslides Myfade">
-      <img src="./img/eLearning-banner-.jpeg" alt="Shs_Tech_Solutions" id = "slider">
+      <img src="./assets/img/eLearning-banner-.jpeg" alt="Shs_Tech_Solutions" id = "slider">
         <div class="text">
             <h1> Online Quiz System </h1>
             <button type="buttom" class="btn-send" data-toggle="modal" data-target="#myModal"> Start Quiz Now </button>
         </div>
     </div>
     <div class="myslides Myfade">
-      <img src="./img/aof-sinav-sonuclari-aciklandi-mi-sinav-sonuclari-nasil-ogrenilir-aof-3-ders-sinavi-ne-zaman_c0c95fce-4ff6-418f-b0ab-59bb7475f7f8.jpg" alt="Shs_Tech_Solutions" id = "slider">
+      <img src="./assets/img/aof-sinav-sonuclari-aciklandi-mi-sinav-sonuclari-nasil-ogrenilir-aof-3-ders-sinavi-ne-zaman_c0c95fce-4ff6-418f-b0ab-59bb7475f7f8.jpg" alt="Shs_Tech_Solutions" id = "slider">
       <div class="text">
         <h1> Online Quiz System </h1>
         <button type="buttom" class="btn-send" data-toggle="modal" data-target="#myModal"> Start Quiz Now </button>
       </div>
     </div>
+  
+      
     <br>
     <a class="previous" onclick="pullslides(-1);">&#10094; </a>
     <a class="nextsld" onclick="pushslides(1);">&#10095; </a>
@@ -114,20 +116,19 @@ include('./_Partial Components/Header.php');
     </div>
 </div>
     <br>
-        <div class = "div-text-about-online">
-            <div class = "container">
-               <div class="col-md-12">
-               <h1 class="text-center" id="text-index-page"> About Online Quiz</h1>
-                Online Quiz Portal os the best mode to track the students' capabilities
-                and test them in high levels to act their best in the next attack. ONLINE
-                QUIZ portal not only looking into the down marks of students. 
-                but also assisting the students and educational institute transcend 
-                geographical boundries and time restrains in the chore of constant
-                evaluation of pupil of functioning. The online Quiz Provides intensive 
-                tools to administrator. monitor and grade Quizez online. ONLINE QUIZ is
-                primary want for college, Universities, Teachers, Professors, Employess       
-                or any one you want to allow to secure content.
-               </div>
+        <div class="div-text-about-online">
+            <div class="container">
+                <div class="col-md-12">
+
+                    <h1 class="text-center" id="text-index-page">
+                        <?= $lang['about_online_quiz']; ?>
+                    </h1>
+
+                    <p>
+                        <?= $lang['about_online_quiz_text']; ?>
+                    </p>
+
+                </div>
             </div>
         </div>
         <br>
@@ -144,15 +145,15 @@ include('./_Partial Components/Header.php');
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img alt="First slide" src="img/images-39.jpg" id = "img-carousel">
+                                        <img alt="First slide" src="assets/img/images-39.jpg" id = "img-carousel">
                                         
                                     </div>
                                     <div class="item">
-                                        <img alt="Second slide" src="img/proyectos-de-e-learning.jpg" id = "img-carousel">
+                                        <img alt="Second slide" src="assets/img/proyectos-de-e-learning.jpg" id = "img-carousel">
                                         
                                     </div>
                                     <div class="item">
-                                        <img alt="Second slide" src="img/online-exam.jpg" id = "img-carousel" >
+                                        <img alt="Second slide" src="assets/img/online-exam.jpg" id = "img-carousel" >
                                         
                                     </div>
                                 </div>
@@ -174,15 +175,15 @@ include('./_Partial Components/Header.php');
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img alt="First slide" src="img/images-20.jpg" id = "img-carousel">
+                                        <img alt="First slide" src="assets/img/images-20.jpg" id = "img-carousel">
                                         
                                     </div>
                                     <div class="item">
-                                        <img alt="Second slide" src="img/images-25.jpg" id = "img-carousel">
+                                        <img alt="Second slide" src="assets/img/images-25.jpg" id = "img-carousel">
                                         
                                     </div>
                                     <div class="item">
-                                        <img alt="Second slide" src="img/online-examination-system.jpg" id = "img-carousel" >
+                                        <img alt="Second slide" src="assets/img/online-examination-system.jpg" id = "img-carousel" >
                                         <!-- <div class="carousel-caption">
                                             <h3> Here you can test yourself skills</h3>
                                             <p> Hello Nasratullah Shafiq how you</p>
@@ -204,17 +205,17 @@ include('./_Partial Components/Header.php');
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img alt="First slide" src="img/1.jpg" id = "img-carousel">
+                                        <img alt="First slide" src="assets/img/1.jpg" id = "img-carousel">
                                         <div class="carousel-caption">
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <img alt="Second slide" src="img/images-31.jpg" id = "img-carousel">
+                                        <img alt="Second slide" src="assets/img/images-31.jpg" id = "img-carousel">
                                         <div class="carousel-caption">
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <img alt="Second slide" src="img/images-12.jpg" id = "img-carousel" >
+                                        <img alt="Second slide" src="assetsi/mg/images-12.jpg" id = "img-carousel" >
                                         <div class="carousel-caption">
                                         </div>
                                     </div>
