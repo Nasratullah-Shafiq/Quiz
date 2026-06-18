@@ -1,12 +1,24 @@
 <?php
-	$filepath = realpath(dirname(__FILE__));
-	include_once($filepath.'./_Partial Components/Users.php');
-	$usr = new Users();
+	// $filepath = realpath(dirname(__FILE__));
+	// include_once($filepath.'./_Partial Components/Users.php');
+	// $usr = new Users();
 
-	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		$Username = $_POST['Username'];
-		$Password = $_POST['Password'];
+	// if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	// 	$Username = $_POST['Username'];
+	// 	$Password = $_POST['Password'];
 		
-		$userlogin = $usr->userLogin($Username, $Password);
-	}
+	// 	$userlogin = $usr->userLogin($Username, $Password);
+	// }
+
+$filepath = realpath(dirname(__FILE__));
+include_once($filepath . '/_Partial Components/CRUD.php');
+
+$usr = new CRUD();
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $Username = $_POST['Username'];
+    $Password = $_POST['Password'];
+
+    $usr->userLogin($Username, $Password);
+}
 ?>
