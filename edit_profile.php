@@ -89,145 +89,170 @@ if(isset($_POST['submit'])){
                                 }
                             ?>  
                         </div>
-                        </div>  
-                        <div class="form-group">
-                            <label for="Full Name" class="col-sm-3 lable"><?= $lang['full_name']; ?></label>
-                            <div class="col-sm-9">
-                              <input type="text" value="<?php echo $result['Full_Name']; ?>" id = "Full_Name" name = "Full_Name" class="form-control" placeholder="Full Name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Username" class="col-sm-3 lable"> <?= $lang['username']; ?></label>
-                            <div class="col-sm-9">
-                              <input type="text" value="<?php echo $result['Username']; ?>" id = "Username" name = "Username" class="form-control" placeholder="Username">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Email" class="col-sm-3 lable"> <?= $lang['email']; ?></label>
-                            <div class="col-sm-9">
-                              <input type="text" value="<?php echo $result['Email']; ?>" id = "Email" name = "Email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Gender" class="col-sm-3 lable"> <?= $lang['gender']; ?></label>
-                            <div class="col-sm-9">
-                                <input type="text" value="<?php echo $result['Gender']; ?>" id = "Gender" name="Gender" class="form-control"  placeholder="Gender">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Phone_No" class="col-sm-3 lable"> <?= $lang['phone_no']; ?></label>
-                            <div class="col-sm-9">
-                                <input type="text" value="<?php echo $result['Phone_No']; ?>" id = "Phone_No" class="form-control" name="Phone_No" placeholder="Phone No">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-9">
-                            <label for = "image"> <?= $lang['profile_picture']; ?></label>
-                            <input type="file" id="Image" name = "Image">  
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" class="button-start-the-quiz" name="submit"> <?= $lang['update_profile']; ?></button>
-                                <span id="span-valid" class="span-validation"></span> 
-                            </div>
-                        </div>
-                    </form>
-
-
-                    <form method="POST" id="Student_Form">
+                        </div> 
+                         <form method="POST" enctype="multipart/form-data">
 
 <div class="container">
 
-    <div class="row mb-3 align-items-center">
+    <!-- PROFILE IMAGE + ALERTS -->
+    <div class="row mb-4">
 
-        <label class="col-md-3 col-form-label">
-            Student ID
-        </label>
+        <div class="col-md-3 text-center">
+
+            <?php 
+            $UsersByUsername = $exm->getUsersByUsername($Username);
+
+            if(!$UsersByUsername){
+                echo '<div class="alert alert-danger">Opps!... No Users Available</div>';
+            }
+            else if($UsersByUsername->num_rows > 0){
+                $result = $UsersByUsername->fetch_assoc();
+            ?>
+
+                <img src="assets/img/_ProfilePicture/<?= htmlspecialchars($result['Image']) ?>"
+                     class="rounded-circle shadow"
+                     width="150"
+                     height="150"
+                     alt="Profile">
+
+            <?php } ?>
+
+        </div>
 
         <div class="col-md-9">
-            <input type="text" class="form-control" name="St_ID" id="St_ID" placeholder="Student ID">
+
+            <?php 
+                if(isset($error)){
+                    echo '<div class="alert alert-danger">'.$error.'</div>';
+                } elseif(isset($msg)){
+                    echo '<div class="alert alert-success">'.$msg.'</div>';
+                }
+            ?>
+
         </div>
 
     </div>
 
+    <!-- FULL NAME -->
     <div class="row mb-3 align-items-center">
 
         <label class="col-md-3 col-form-label">
-            Name
+            <?= $lang['full_name']; ?>
         </label>
 
         <div class="col-md-9">
-            <input type="text" class="form-control" name="Full_Name" id="Full_Name" placeholder="Student Name">
+            <input type="text"
+                   name="Full_Name"
+                   id="Full_Name"
+                   class="form-control"
+                   value="<?= htmlspecialchars($result['Full_Name']) ?>"
+                   placeholder="Full Name">
         </div>
 
     </div>
 
+    <!-- USERNAME -->
     <div class="row mb-3 align-items-center">
 
         <label class="col-md-3 col-form-label">
-            Father Name
+            <?= $lang['username']; ?>
         </label>
 
         <div class="col-md-9">
-            <input type="text" class="form-control" name="Father_Name" id="Father_Name" placeholder="Father Name">
+            <input type="text"
+                   name="Username"
+                   id="Username"
+                   class="form-control"
+                   value="<?= htmlspecialchars($result['Username']) ?>"
+                   placeholder="Username">
         </div>
 
     </div>
 
+    <!-- EMAIL -->
     <div class="row mb-3 align-items-center">
 
         <label class="col-md-3 col-form-label">
-            Marks
+            <?= $lang['email']; ?>
         </label>
 
         <div class="col-md-9">
-            <input type="text" class="form-control" name="Marks" id="Marks" placeholder="Marks">
+            <input type="email"
+                   name="Email"
+                   id="Email"
+                   class="form-control"
+                   value="<?= htmlspecialchars($result['Email']) ?>"
+                   placeholder="Email">
         </div>
 
     </div>
 
+    <!-- GENDER -->
     <div class="row mb-3 align-items-center">
 
         <label class="col-md-3 col-form-label">
-            Grade
+            <?= $lang['gender']; ?>
         </label>
 
         <div class="col-md-9">
-            <input type="text" class="form-control" name="Grade" id="Grade" placeholder="Grade">
+            <input type="text"
+                   name="Gender"
+                   id="Gender"
+                   class="form-control"
+                   value="<?= htmlspecialchars($result['Gender']) ?>"
+                   placeholder="Gender">
         </div>
 
     </div>
 
+    <!-- PHONE -->
     <div class="row mb-3 align-items-center">
 
         <label class="col-md-3 col-form-label">
-            Phone No
+            <?= $lang['phone_no']; ?>
         </label>
 
         <div class="col-md-9">
-            <input type="text" class="form-control" name="Phone_No" id="Phone_No" placeholder="Phone Number">
+            <input type="text"
+                   name="Phone_No"
+                   id="Phone_No"
+                   class="form-control"
+                   value="<?= htmlspecialchars($result['Phone_No']) ?>"
+                   placeholder="Phone No">
         </div>
 
     </div>
 
-    <!-- BOOK SELECT -->
- 
+    <!-- IMAGE UPLOAD -->
+    <div class="row mb-4 align-items-center">
+
+        <label class="col-md-3 col-form-label">
+            <?= $lang['profile_picture']; ?>
+        </label>
+
+        <div class="col-md-9">
+            <input type="file"
+                   name="Image"
+                   id="Image"
+                   class="form-control">
+        </div>
+
+    </div>
 
     <!-- BUTTON -->
-    <div class="row mt-4">
+    <div class="row">
 
         <div class="col-md-12 text-end">
 
-            <input type="hidden" name="action" id="action">
+            <button type="submit"
+                    name="submit"
+                    class="btn btn-primary px-4">
 
-            <input type="submit"
-                   name="button_action"
-                   class="btn btn-primary px-4"
-                   id="button_action"
-                   value="Register Student">
+                <?= $lang['update_profile']; ?>
 
-            <span id="span-val" class="text-danger ms-3"></span>
+            </button>
+
+            <span id="span-valid" class="ms-3 text-danger"></span>
 
         </div>
 
@@ -238,6 +263,7 @@ if(isset($_POST['submit'])){
 </form>
 
 
+ 
 
 
 				</div>
