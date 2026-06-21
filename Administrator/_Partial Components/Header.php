@@ -43,18 +43,18 @@ $TotalContact = $exm->getContact();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <link href ="./../CSS/bootstrap.min.css" rel=" stylesheet">
-    <link href ="./../CSS/bootstrap.css" rel=" stylesheet" />
-    <link href="./../CSS/animated.css" rel="stylesheet" >
+    <link href ="./../assetsCSS/bootstrap.min.css" rel=" stylesheet">
+    <link href ="./../assets/CSS/bootstrap.css" rel=" stylesheet" />
+    <link href="./../assets/CSS/animated.css" rel="stylesheet" >
     <link href = "./CSS/Quiz_Admin_Panel.css" rel = "Stylesheet" type = "text/css"/>
-    <link href = "./../CSS/MyCarousel.css" rel = "Stylesheet" type = "text/css"/>
+    <link href = "./../assets/CSS/MyCarousel.css" rel = "Stylesheet" type = "text/css"/>
     
     <!-- <link href ="./../CSS/bootstrap - Copy.css" rel=" stylesheet" /> -->
 
     <!-- Bootstrap -->
-    <link href="./../img/Graduation Cap_48px.png" rel="icon" type="image/png" >
-    <link href="./../CSS/font-awesome.css" rel="stylesheet" >
-    <link href="./../CSS/font-awesome.min.css" rel="stylesheet" >
+    <link href="./../assets/img/Graduation Cap_48px.png" rel="icon" type="image/png" >
+    <link href="./../assets/CSS/font-awesome.css" rel="stylesheet" >
+    <link href="./../assets/CSS/font-awesome.min.css" rel="stylesheet" >
     <link href="./../CSS/animated.css" rel="stylesheet" >
   
     <script src = "./js/AdminOnlineQuiz.js"></script>
@@ -72,7 +72,7 @@ $TotalContact = $exm->getContact();
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="index.php">
-          <div class = "col-xs-3" id = "img-cup"><img src="../img/Graduation Cap_52px.png" alt="Logo" width="30px"></div>
+          <div class = "col-xs-3" id = "img-cup"><img src="../assets/img/Graduation Cap_52px.png" alt="Logo" width="30px"></div>
           <div class = "col-xs-9" id = "div-quiz">Online Quiz</div> 
           </a>
            
@@ -105,7 +105,7 @@ $TotalContact = $exm->getContact();
               </li>
           <?php
             if(!isset($_SESSION['Username'])){?>
-            <li><a href="../sign in.php"><img alt="" class="img-circle" width="20px;" height = "20px" src="../img/placeholder-user.png" /> sign in </a></li>
+            <li><a href="../sign_in.php"><img alt="" class="img-circle" width="20px;" height = "20px" src="../img/placeholder-user.png" /> sign in </a></li>
                 <?php }?>
             <li class="dropdown">
              
@@ -118,7 +118,7 @@ $TotalContact = $exm->getContact();
 
             <li class="dropdown dropdown-user">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    <?php echo "<img alt='' class='img-circle' width='30px;' height = '30px' src='../img/_ProfilePicture/$profile_img ' style = 'margin-top: -5px; margin-bottom: -5px;' />"; ?>
+                    <?php echo "<img alt='' class='img-circle' width='30px;' height = '30px' src='../assets/img/_ProfilePicture/$profile_img ' style = 'margin-top: -5px; margin-bottom: -5px;' />"; ?>
                         <span class="username username-hide-on-mobile"> 
                         <?php echo $_SESSION['Username']; ?> </span>
                         <i class="fa fa-angle-down"></i>
@@ -240,7 +240,7 @@ $TotalContact = $exm->getContact();
         </div><!--/.nav-collapse -->
       </div>
     </nav>
- <div class="jumbotron" id = "jbt" style="background-image: url('../img/IBPS-Banne.jpg'); background-size: cover;">
+ <div class="jumbotron" id = "jbt" style="background-image: url('../assets/img/IBPS-Banne.jpg'); background-size: cover;">
         <div id="details" class="animated fadeInLeft">
             <h1> QUIZ <span> ADMIN </span> PANEL</h1>
             <p class = "paragraph">Control Your Quiz Here</p>    
