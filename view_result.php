@@ -57,7 +57,7 @@ if(isset($_GET['id'])){
                 <thead>
                     <tr>  
                         <th> Profile Picture </th>
-                        <th> <?php echo "<img alt=''width='150px' height = '120px' src='./img/_ProfilePicture/$profile_img' style = 'margin-top: -5px; margin-bottom: -5px;' />"; ?> </th>
+                        <th> <?php echo "<img alt=''width='150px' height = '120px' src='./assets/img/_ProfilePicture/$profile_img' style = 'margin-top: -5px; margin-bottom: -5px;' />"; ?> </th>
                     </tr>
                     <tr>
                         <th> Total Number of Questions </th>
