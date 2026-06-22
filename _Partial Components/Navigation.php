@@ -31,12 +31,12 @@ if(isset($_GET['id'])){ ?>
             if(isset($_GET['id']) && $row['Subject_ID']==$_GET['id']){
                 $SubjectID = $row['Subject_ID'];
                 $subject = $row['Subject'];
-                echo "<a class = 'active' href = 'ExamDetails.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
+                echo "<a class = 'active' href = 'exam_details.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
             }
             else{
                 $SubjectID = $row['Subject_ID'];
                 $subject = $row['Subject'];
-                echo "<a  href = 'ExamDetails.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
+                echo "<a  href = 'exam_details.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
             }
         }
     }
