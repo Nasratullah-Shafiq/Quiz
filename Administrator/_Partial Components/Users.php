@@ -1,8 +1,8 @@
 
 <?php 
-$filepath = realpath(dirname(__FILE__));
-include_once($filepath.'./Database.php');
-include_once($filepath.'./Format.php');
+
+include_once __DIR__ . '/Database.php';
+include_once __DIR__ . '/Format.php';
 
 class Users{
 	private $db;
