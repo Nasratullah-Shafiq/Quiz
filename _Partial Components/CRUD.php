@@ -12,16 +12,6 @@ class CRUD{
 	}
 
 public function addResults($User_ID, $TotalNumberOfQuestion, $Username, $Teacher, $Subject, $Credit_Hours, $Attempted_Answer, $Correct_Answer, $Wrong_Answer, $No_Answer, $Result){
-	// $TotalNumberOfQuestion = $this->fm->validation($TotalNumberOfQuestion);
-	// $Username  = $this->fm->validation($Username);
-	// $Teacher  = $this->fm->validation($Teacher);
-	// $Subject  = $this->fm->validation($Subject);
-	// $Credit_Hours  = $this->fm->validation($Credit_Hours);
-	// $Attempted_Answer  = $this->fm->validation($Attempted_Answer);
-	// $Correct_Answer = $this->fm->validation($Correct_Answer);
-	// $Wrong_Answer = $this->fm->validation($Wrong_Answer);
-	// $No_Answer = $this->fm->validation($No_Answer);
-	// $Result = $this->fm->validation($Result);
 	
 	$User_ID = mysqli_real_escape_string($this->db->link, $User_ID);		
 	$TotalNumberOfQuestion = mysqli_real_escape_string($this->db->link, $TotalNumberOfQuestion);
@@ -56,6 +46,48 @@ public function addResults($User_ID, $TotalNumberOfQuestion, $Username, $Teacher
 		}
 }
 
+public function sendMessage($Full_Name, $Email, $Phone_No, $Message)
+{
+   
+	$Full_Name = $this->fm->validation($Full_Name);
+    $Email     = $this->fm->validation($Email);
+    $Phone_No  = $this->fm->validation($Phone_No);
+    $Message   = $this->fm->validation($Message);
+
+   
+	$Full_Name = mysqli_real_escape_string($this->db->link, $Full_Name);
+    $Email     = mysqli_real_escape_string($this->db->link, $Email);
+    $Phone_No  = mysqli_real_escape_string($this->db->link, $Phone_No);
+    $Message   = mysqli_real_escape_string($this->db->link, $Message);
+
+    // Validation
+    if ($Full_Name == "" || $Email == "" || $Message == "") {
+        echo "<span class='error'> Fields must not be empty! </span>";
+        exit();
+    }
+
+    // Email validation
+    else if (filter_var($Email, FILTER_VALIDATE_EMAIL) === false) {
+        echo "<span class='error'> Invalid E-mail Address! </span>";
+        exit();
+    }
+
+    else {
+
+        // Insert message into contact table
+			$query = "insert into Contact_Us(Full_Name, Email, Phone_No, Message, Language) value('".$Full_Name."', '".$Email."', '".$Phone_No."', '".$Message."', 'English')";
+
+        $inserted_row = $this->db->insert($query);
+
+        if ($inserted_row) {
+            echo "<span class='success'> Your message has been sent successfully! </span>";
+            exit();
+        } else {
+            echo "<span class='error'> Error: Message not sent! </span>";
+            exit();
+        }
+    }
+}
 
 public function userRegistration($Full_Name, $Username, $Password, $Email, $Gender, $Phone_No){
 	$Full_Name = $this->fm->validation($Full_Name);
