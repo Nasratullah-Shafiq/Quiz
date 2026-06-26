@@ -2,8 +2,11 @@
 
 include('./_Partial Components/Header.php');
 
+
+// include_once('./_Partial Components/link.php');
+
 ?>
-<div class="jumbotron" id = "jbt" style="background-image: url('./assets/img/IBPS-Banne.jpg'); background-size: cover;">
+<div class="jumbotron" id = "jbt" style="padding-top: 60px; background-image: url('./assets/img/IBPS-Banne.jpg'); background-size: cover;">
         <div class="container">
             <div id="details" class="animated fadeInLeft">
                 <h1>
@@ -16,82 +19,132 @@ include('./_Partial Components/Header.php');
             </div>
         </div>
     </div>
-<?php 
+    <script>
+          $(document).ready(function() {
+        //     $("#btn_send_message").click(function(){
+        //     var Full_Name = $("#Full_Name").val();
+        //     var Email = $("#Email").val();
+        //     var Phone_No = $("#Phone_No").val();
+        //     var Message = $("#Message").val();
+            
+        //     var dataString = 'Full_Name='+Full_Name+'&Email='+Email+'&Phone_No='+Phone_No+'&Message='+Message;
+        //     $.ajax({
+        //     type: "POST",
+        //     url: "sendMessage.php",
+        //     data: dataString,
+        //     success: function(data){
+        //         $("#div_message").show();
+        //         $("#span-valid").html(data);
+        //     }
+        //     });
+        //     return false;
+        // });
+            });
 
-if(isset($_POST['submit'])){
-    $Full_Name = mysqli_real_escape_string($con, $_POST['Full_Name']);
-    $Email = mysqli_real_escape_string($con, $_POST['Email']);
-    $Phone_No = mysqli_real_escape_string($con, $_POST['Phone_No']);
-    $Message = mysqli_real_escape_string($con, $_POST['Message']);
-    
-    $chk_msg = "select * from Contact_Us where Message = '$Message'";
-    $chk_run_msg = mysqli_query($con, $chk_msg);
+        </script>
 
-    if(empty($Full_Name) or empty($Email) or empty($Phone_No) or empty($Email) or empty($Message)){
-        $error = "All fields required";
-        
-    }
-    else if(mysqli_num_rows($chk_run_msg)>0){
-        $error = "Message Already exist try new one";
-    }
-    else{
-        $insert_query = "insert into Contact_Us(Full_Name, Email, Phone_No, Message, Language) values('$Full_Name', '$Email', '$Phone_No', '$Message', 'English')";
-        if(mysqli_query($con, $insert_query)){
-            $msg = "Message send Successfully";
 
-        }
-        else{
-            $error = "Message not sent";
-        }
-    }
-}
-?>
+
     	<div class="container">
     		<div class="row">
-            <div class = "col-sm-12">
-                <p style="font-size: 16px;"> Suggest, complain and any idea you have about online quiz contact with ONLINE QUIZ </p>                
+            <div class="col-12">
+                <div class="p-4 mb-4 bg-light border-start border-5 border-primary rounded shadow-sm">
+                    <h4 class="mb-3">
+                        <?= $lang['contact_us']; ?>
+                    </h4>
+
+                    <p class="mb-0 text-muted fs-6">
+                        <?= $lang['contact_description']; ?>
+                    </p>
+                </div>
             </div>
     		<div class="col-md-9">
-				<form action="" method = "POST">
-                    <div class="form-group">
-                            <?php 
-                                if (isset($error)) {
-                                    echo "<div class='alert alert-danger' role='alert' style = 'font-size: 16px;'> $error </div>";
-                                }
-                                else if (isset($msg)) {
-                                    echo "<div class='alert alert-success' role='alert' style = 'font-size: 16px;'> $msg </div>";
-                                }
-                            ?>  
-                    </div>
-                    <div class="form-group">
-                        <label for="ful-name"> Full Name </label>
-                        <input type="text" id="Full_Name" name = "Full_Name" class="form-control" placeholder="full Name">
+				<form action="" method="POST">
+
+                    <?php
+                        if (isset($error)) {
+                            echo '<div class="alert alert-danger">' . $error . '</div>';
+                        } elseif (isset($msg)) {
+                            echo '<div class="alert alert-success">' . $msg . '</div>';
+                        }
+                    ?>
+
+                    <!-- Full Name -->
+                    <div class="row mb-3">
+                        <label for="Full_Name" class="col-sm-3 col-form-label">
+                            <?= $lang['full_name']; ?>
+                        </label>
+                        <div class="col-sm-9">
+                            <input type="text"
+                                class="form-control"
+                                id="Full_Name"
+                                name="Full_Name"
+                                placeholder="<?= $lang['enter_full_name']; ?>">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="Email"> Email </label>
-                        <input type="text" id="Email" class="form-control" name = "Email" placeholder="Email">
+                    <!-- Email -->
+                    <div class="row mb-3">
+                        <label for="Email" class="col-sm-3 col-form-label">
+                            <?= $lang['email']; ?>
+                        </label>
+                        <div class="col-sm-9">
+                            <input type="email"
+                                class="form-control"
+                                id="Email"
+                                name="Email"
+                                placeholder="<?= $lang['enter_email']; ?>">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="ful-name"> Phone No </label>
-                        <input type="text" id="Phone_No" class="form-control" name = "Phone_No" placeholder="Phone No">
+                    <!-- Phone -->
+                    <div class="row mb-3">
+                        <label for="Phone_No" class="col-sm-3 col-form-label">
+                            <?= $lang['phone_no']; ?>
+                        </label>
+                        <div class="col-sm-9">
+                            <input type="text"
+                                class="form-control"
+                                id="Phone_No"
+                                name="Phone_No"
+                                placeholder="<?= $lang['enter_phone_number']; ?>">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="Message"> Message </label>
-                        <textarea id="Message" col="30" rows="5" class="form-control" name="Message" placeholder="your message here..."> </textarea>
+                    <!-- Message -->
+                    <div class="row mb-3">
+                        <label for="Message" class="col-sm-3 col-form-label">
+                            <?= $lang['message']; ?>
+                        </label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control"
+                                    id="Message"
+                                    name="Message"
+                                    rows="5"
+                                    placeholder="<?= $lang['enter_your_message']; ?>"></textarea>
+                        </div>
                     </div>
-                    <input type="submit" name="submit" class="button-start-the-quiz" value="Send Message" id = "btn-send-messe">
-                    <div class="form-group" style = "padding-top: 20px; font-size: 16px;">
-                        <span id="span-valid" class="span-validation"></span>  
+
+                    <!-- Button -->
+                    <div class="row">
+                        <div class="offset-sm-3 col-sm-9">
+                            <button type="button" id='btn_send_message' name="submit" class="btn btn-primary">
+                                <?= $lang['send_message']; ?>
+                            </button>
+
+                            <div class="mt-3">
+                                <div class="alert alert-success" id="div_message" style="display: none;">
+                                    <span id="span-valid"></span>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
 
                 </form>
-
-				</div>
-    		</div>
+			</div>
     	</div>
+    </div>
 <?php
 include('./_Partial Components/Footer.php');
 ?>    
