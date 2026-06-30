@@ -5,70 +5,98 @@ include('./_Partial Components/Header.php');
 ?>
 
 
-<div id="myModal" class="modal Myfade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+
     <div class="modal-dialog modal-sm">
-      <div class="modal-content">
 
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Available Quizez</h4>
-        </div>
-        <div class="modal-body">
-            <?php 
-            $Subject = $exm->getSubjects();
-            $rows = $Subject->fetch_assoc();
-            $SubjectID = $rows['Subject_ID'];
-            ?>
-            
-             <nav class="nav-index-side">
-            <?php if(isset($_SESSION['Username'])){ 
-                $Username = $_SESSION['Username'];
-                $UsersByUsername = $exm->getUsersByUsername($Username);
-                $row = $UsersByUsername->fetch_assoc();
-                } ?>
-                
-            <?php
-                $allSubject = $exm->getSubjects();
+        <div class="modal-content">
 
-                if($allSubject->num_rows>0){
-                    if($row['Status']=='1'){
-                    while($row = $allSubject->fetch_assoc()){
-                        if(isset($_GET['id']) && $row['Subject_ID']==$_GET['id']){
-                            $SubjectID = $row['Subject_ID'];
-                            $subject = $row['Subject'];
-                            echo "<a class = 'active' href = 'exam_details.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
+            <div class="modal-header">
+
+                <h5 class="modal-title" id="myModalLabel">
+                    Available Quizzes
+                </h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <?php
+                if (isset($_SESSION['Username'])) {
+
+                    $Username = $_SESSION['Username'];
+                    $UsersByUsername = $exm->getUsersByUsername($Username);
+                    $user = $UsersByUsername->fetch_assoc();
+
+                    if ($user['Status'] == '1') {
+
+                        $allSubject = $exm->getSubjects();
+
+                        if ($allSubject && $allSubject->num_rows > 0) {
+                ?>
+
+                            <div class="list-group">
+
+                                <?php
+                                while ($subject = $allSubject->fetch_assoc()) {
+                                ?>
+
+                                    <a href="exam_details.php?id=<?php echo $subject['Subject_ID']; ?>"
+                                       class="list-group-item list-group-item-action">
+
+                                        <i class="fa fa-list"></i>
+                                        <?php echo $subject['Subject']; ?> Quiz
+
+                                    </a>
+
+                                <?php } ?>
+
+                            </div>
+
+                        <?php
+                        } else {
+                            echo "<p class='text-center mb-0'>No Subjects Yet</p>";
                         }
-                        else{
-                            $SubjectID = $row['Subject_ID'];
-                            $subject = $row['Subject'];
-                            echo "<a  href = 'exam_details.php?id=".$SubjectID."'><i class='fa fa-list'></i> $subject Quiz </a>";
-                        }
+
+                    } else {
+
+                        echo "<p class='text-center mb-0'>Your account is not allowed to take quizzes.</p>";
+
                     }
-                }
-            }
-                else{
-                    echo "<center> <h3><p> No Subjects Yet </p></h3> </center>";
-                }
 
-            ?>
-            </nav>
-            
+                } else {
+
+                    echo "<p class='text-center mb-0'>Please login first.</p>";
+
+                }
+                ?>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+
+            </div>
+
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-        </form>
-        </div>
+
     </div>
-    
-    </div>
+
+</div>
 
     <div class="slideshow-container">
     <div class="myslides Myfade">
         <img src="./assets/img/proyectos-de-e-learning.jpg" alt="Shs_Tech_Solutions" id = "slider">
         <div class="text">
             <h1> Online Quiz System </h1>
-            <button type="buttom" class="btn-send" data-toggle="modal" data-target="#myModal"> Start Quiz Now </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Start Quiz Now
+</button>
         </div>
         
     </div>
@@ -76,7 +104,12 @@ include('./_Partial Components/Header.php');
         <img src="./assets/img/IMG_8177.jpg" alt="Shs_Tech_Solutions" id = "slider">
         <div class="text">
             <h1> Online Quiz System </h1>
-            <button type="buttom" class="btn-send" data-toggle="modal" data-target="#myModal"> Start Quiz Now </button>
+            <button type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal">
+    Start Quiz Now
+</button>
             
         </div>
     </div>
@@ -84,7 +117,12 @@ include('./_Partial Components/Header.php');
         <img src="./assets/img/banner.png" alt="Shs_Tech_Solutions" id = "slider"/>
         <div class="text">
             <h1> Online Quiz System </h1>
-             <button type="buttom" class="btn-send" data-toggle="modal" data-target="#myModal"> Start Quiz Now </button>
+             <button type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal">
+    Start Quiz Now
+</button>
             
         </div>
     </div>
@@ -92,14 +130,25 @@ include('./_Partial Components/Header.php');
       <img src="./assets/img/eLearning-banner-.jpeg" alt="Shs_Tech_Solutions" id = "slider">
         <div class="text">
             <h1> Online Quiz System </h1>
-            <button type="buttom" class="btn-send" data-toggle="modal" data-target="#myModal"> Start Quiz Now </button>
+            <button type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal">
+    Start Quiz Now
+</button>
         </div>
     </div>
+
     <div class="myslides Myfade">
       <img src="./assets/img/aof-sinav-sonuclari-aciklandi-mi-sinav-sonuclari-nasil-ogrenilir-aof-3-ders-sinavi-ne-zaman_c0c95fce-4ff6-418f-b0ab-59bb7475f7f8.jpg" alt="Shs_Tech_Solutions" id = "slider">
       <div class="text">
         <h1> Online Quiz System </h1>
-        <button type="buttom" class="btn-send" data-toggle="modal" data-target="#myModal"> Start Quiz Now </button>
+        <button type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal">
+    Start Quiz Now
+</button>
       </div>
     </div>
   
