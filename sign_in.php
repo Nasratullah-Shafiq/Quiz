@@ -79,9 +79,9 @@ include_once('./_Partial Components/link.php');
 </div>
 </div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/OnlineQuiz.js"></script>
+    <script src="assets/js/tests/vendor/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/online.quiz.js"></script>
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
