@@ -51,7 +51,6 @@ if(isset($_SESSION['Username'])){
 <?php if($isRTL): ?>
     <link rel="stylesheet" href="assets/CSS/bootstrap.min.css">
     <link rel="stylesheet" href="assets/CSS/bootstrap-rtl.min.css">
-    <link rel="stylesheet" href="assets/CSS/rtl.css">
 <?php else: ?>
     <link rel="stylesheet" href="assets/CSS/bootstrap.min.css">
 <?php endif; ?>
@@ -63,13 +62,7 @@ if(isset($_SESSION['Username'])){
 
 <!-- ================= JS ORDER (IMPORTANT) ================= -->
 
-<!-- <script src="assets/tests/vendor/js/jquery.min.js"></script> -->
-<!-- <script src="assets/js/bootstrap.min.js"></script> -->
-<!-- <script src="assets/js/OnlineQuiz.js"></script> -->
-
-<script src="./assets/js/jquery.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
-
+    <script src="./assets/js/jquery.js"></script>
 <script>
 $(function () {
     $('.mobile-nav').click(function() {
