@@ -24,8 +24,8 @@ include_once "_Partial Components/".$class.".php";
     <link rel="icon" type="image/png" href="./assets/img/Graduation Cap_48px.png">
 
     <!-- JavaScript -->
-    <script src="./assets/js/jquery.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/OnlineQuiz.js"></script>
+    <!-- <script src="./assets/js/jquery.js"></script> -->
+    <!-- <script src="./assets/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="assets/js/online.quiz.js"></script> -->
 
 </head>
