@@ -176,6 +176,8 @@ $totalContacts = $exm->getAllContacts();
                 	   	  
     </div>
 </div>
+<script src="./js/sidebar.js"></script>
+
 
 <?php 
 include('./_Partial Components/Footer.php');
