@@ -68,181 +68,68 @@ $TotalContact = $exm->getContact();
     <script src="./../assets/js/bootstrap.bundle.min.js"></script>
 </head>
 <body >
-    <nav class="navbar navbar-inverse navbar-static-top" style = "background-color: rgb(0,112,192); border: none;">
-      <div class="container-fluid" style = "margin-left: 1%; margin-right: 1%;">
-        <div class="navbar-header" >
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" id="btn-top-navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php">
-          <div class = "col-xs-3" id = "img-cup"><img src="../img/Graduation Cap_52px.png" alt="Logo" width="30px"></div>
-          <div class = "col-xs-9" id = "div-quiz">Online Quiz</div> 
-          </a>
-           
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          
-          <ul class="nav navbar-nav" id="top-navbar">
-            <li class="actie"><a href="index.php"><i class="fa fa-home"></i> Home </a></li>
-            <li><a href="About.php" id="c"><i class="fa fa-info"></i> About </a></li>
-            <li><a href="../index.php"><i class="fa fa-list"></i> View Quizes</a></li>
-            
-          </ul>
-          <ul class="nav navbar-nav navbar-right" id = "top-navbar">
-              <li class="dropdown dropdown-user">
-                  <a href="javascrip:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                      <span class="username"> Language </span>
-                      <i class="fa fa-angle-down"></i>
-                  </a>
-                  <ul class="dropdown-menu" id="drop-down-language">
-                      <li >
-                          <a href="index.php" style="color: #fff;">
-                              English </a>
-                      </li>
-                      <li class="divider"> </li>
-                      <li>
-                          <a href="Dari/index.php" style="color: #fff;">
-                              Dari  </a>
-                      </li>
-                  </ul>
-              </li>
-          <?php
-            if(!isset($_SESSION['Username'])){?>
-            <li><a href="../sign in.php"><img alt="" class="img-circle" width="20px;" height = "20px" src="../img/placeholder-user.png" /> sign in </a></li>
-                <?php }?>
-            <li class="dropdown">
-             
-            <?php if(isset($_SESSION['Username'])){ 
-                $Username = $_SESSION['Username'];
-                $UsersByUsername = $exm->getUsersByUsername($Username);
-                $row = $UsersByUsername->fetch_assoc();
-                $profile_img = $row['Image'];
-            ?>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary top-navbar">
 
-            <li class="dropdown dropdown-user">
-                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    <?php echo "<img alt='' class='img-circle' width='30px;' height = '30px' src='../img/_ProfilePicture/$profile_img ' style = 'margin-top: -5px; margin-bottom: -5px;' />"; ?>
-                        <span class="username username-hide-on-mobile"> 
-                        <?php echo $_SESSION['Username']; ?> </span>
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-default" id="dropdown-profile">
-                        <li >
-                            <a id = "dropdown-profile-admin" href="../Profile.php">
-                            <i class="fa fa-user" ></i> My Profile </a>
-                        </li>
-                        <li class="divider"> </li>
-                        <li>
-                            <a id = "dropdown-profile-admin" href="Mail.php">
-                            <i class="fa fa-envelope" ></i> My inbox 
-                            <?php if($TotalContact>0){
-                                echo '<span class="badge" style="background-color: black;">'. $TotalContact .'</span>';
-                            }
-                            ?>
-                            </a> 
-                        </li>
-                        <li class="divider"> </li>
-                        <li>
-                            <a id = "dropdown-profile-admin" href="../Logout.php">
-                            <i class="fa fa-power-off"></i> Log Out </a>
-                        </li>
-                    </ul>
-                </li>
-            <?php } ?>
-                    
-            <nav class="nav-admin-panel-top"> 
-                <div class="Accordion-container">
-                        <div class="dashbord">
-                            <a href="index.php"> Dashbord  </a>
-                        </div>
-                        <div class="set">
-                            <a href="#"> Qestions <i class="fa fa-angle-left"> </i> </a>
-                        
-                            <div class="content">
-                                <a href="Add-Questions.php?Question" class="nav-link ">       
-                                    <li class="nav-item">
-                                          <!-- <i class = "fa fa-book"></i> -->  Add Questions
-                                    </li>
-                                </a>
-                                <a href="Manage-Questions.php?Question" class="nav-link ">
-                                    <li class="nav-item">
-                                            Manage Questions
-                                    </li>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="set">
-                            <a href="#"> Subjects <i class="fa fa-angle-left"> </i> </a>
-                        
-                            <div class="content">
-                                <a href="Add-Subject.php" class="nav-link ">       
-                                    <li class="nav-item">
-                                          <!-- <i class = "fa fa-book"></i> -->  Add Subject
-                                    </li>
-                                </a>
-                                <a href="Manage-Subject.php" class="nav-link ">
-                                    <li class="nav-item">
-                                            Manage Subject
-                                    </li>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="set">
-                            <a href="#"> Faculties <i class="fa fa-angle-left"> </i> </a>
-                        
-                            <div class="content">
-                                <a href="Add-Faculty.php" class="nav-link ">       
-                                    <li class="nav-item">
-                                          <!-- <i class = "fa fa-book"></i> -->  Add Faculty
-                                    </li>
-                                </a>
-                                <a href="Manage-Faculty.php" class="nav-link ">
-                                    <li class="nav-item">
-                                            Manage Faculty
-                                    </li>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="set">
-                            <a href="#"> Teachers <i class="fa fa-angle-left"> </i> </a>
-                        
-                            <div class="content">
-                                <a href="Add-Teacher.php" class="nav-link ">       
-                                    <li class="nav-item">
-                                          <!-- <i class = "fa fa-book"></i> -->  Add Teachers
-                                    </li>
-                                </a>
-                                <a href="Manage-Teacher.php" class="nav-link ">
-                                    <li class="nav-item">
-                                            Manage Teachers
-                                    </li>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="set">
-                            <a href="#"> Users<i class="fa fa-angle-left"> </i> </a>
-                        
-                            <div class="content">
-                                <a href="Add-Users.php?Question" class="nav-link ">       
-                                    <li class="nav-item">
-                                          <!-- <i class = "fa fa-book"></i> -->  Add Users
-                                    </li>
-                                </a>
-                                <a href="Manage-Users.php" class="nav-link ">
-                                    <li class="nav-item">
-                                            Manage Users
-                                    </li>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<div class="container-fluid">
 
-                </nav>
-          </ul>
+<a class="navbar-brand d-flex align-items-center" href="index.php">
 
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+<img src="../img/Graduation Cap_52px.png"
+     width="32"
+     class="me-2">
+
+<span>Online Quiz</span>
+
+</a>
+
+<button class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#topNavbar">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="topNavbar">
+
+<ul class="navbar-nav me-auto">
+
+<li class="nav-item">
+<a class="nav-link active" href="index.php">
+<i class="fa-solid fa-house me-1"></i>
+Home
+</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="About.php">
+<i class="fa-solid fa-circle-info me-1"></i>
+About
+</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="../index.php">
+<i class="fa-solid fa-list me-1"></i>
+View Quizzes
+</a>
+</li>
+
+</ul>
+
+<ul class="navbar-nav ms-auto">
+
+...
+Language dropdown
+
+...
+
+User dropdown
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
