@@ -4,7 +4,7 @@ include('./_Partial Components/Header.php');
 ?>
 
 
-<div class="jumbotron" id="jbt" style="background-image: url('./assets/img/IBPS-Banne.jpg'); background-size: cover;">
+<div class="jumbotron" id="jbt" style="padding-top: 60px; background-image: url('./assets/img/IBPS-Banne.jpg'); background-size: cover;">
     <div class="container">
         <div id="details" class="animated fadeInLeft">
 
