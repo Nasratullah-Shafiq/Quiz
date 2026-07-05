@@ -1,10 +1,9 @@
 
 <?php 
 
-include('./_Partial Components/Header.php');
-$filepath = realpath(dirname(__FILE__));
-include_once($filepath.'./_Partial Components/Users.php');
-$usr = new Users();
+include_once __DIR__ . '/_Partial Components/Header.php';
+include_once __DIR__ . '/_Partial Components/CRUD.php';
+$usr = new CRUD();
 
 
 if(isset($_GET['id'])){
