@@ -2,7 +2,6 @@
 
 include('./_Partial Components/Header.php');
 
-
 // include_once('./_Partial Components/link.php');
 
 ?>
