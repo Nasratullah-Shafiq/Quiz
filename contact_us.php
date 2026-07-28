@@ -3,7 +3,6 @@
 include('./_Partial Components/Header.php');
 
 // include_once('./_Partial Components/link.php');
-
 ?>
 <div class="jumbotron" id = "jbt" style="padding-top: 60px; background-image: url('./assets/img/IBPS-Banne.jpg'); background-size: cover;">
         <div class="container">
