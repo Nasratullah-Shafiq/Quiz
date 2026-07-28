@@ -1,5 +1,4 @@
 <?php
-
 include('./_Partial Components/Header.php');
 ?>
 
