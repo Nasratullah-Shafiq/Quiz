@@ -18,7 +18,6 @@
 		$Result = $_POST['Result'];
 		
 		$Results = $usr->addResults($User_ID, $TotalNumberOfQuestion, $Username, $Teacher, $Subject, $Credit_Hours, $Attempted_Answer, $Correct_Answer, $Wrong_Answer, $No_Answer, $Result);
-	
 	}
 
 ?>
