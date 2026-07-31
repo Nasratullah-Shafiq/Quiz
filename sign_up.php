@@ -25,11 +25,15 @@ include('./_Partial Components/link.php');
                 $Image = $_FILES['image']['name'];
                 $Image_tmp = $_FILES['image']['tmp_name'];
 
-                $chk_user = "select * from Users where Username = '$Username'";
-                $chk_run_user = mysqli_query($con, $chk_user);
+			$chk_stmt = mysqli_prepare($con, "SELECT * FROM Users WHERE Username = ?");
+				mysqli_stmt_bind_param($chk_stmt, "s", $Username);
+				mysqli_stmt_execute($chk_stmt);
+				$chk_run_user = mysqli_stmt_get_result($chk_stmt);
 
-                $chk_email = "select * from Users where Email = '$Email'";
-                $chk_run_email = mysqli_query($con, $chk_email);
+				$chk_email_stmt = mysqli_prepare($con, "SELECT * FROM Users WHERE Email = ?");
+				mysqli_stmt_bind_param($chk_email_stmt, "s", $Email);
+				mysqli_stmt_execute($chk_email_stmt);
+				$chk_run_email = mysqli_stmt_get_result($chk_email_stmt);
 
                 if(empty($Full_Name) or empty($Username) or empty($Password) or empty($Email) or empty($Gender) or empty($Phone_No) or empty($Image)){
                     $error = "All fields required";
@@ -45,8 +49,9 @@ include('./_Partial Components/link.php');
                     $error_email = "Email Already exist try new one";
                  }
                 else{
-                    $insert_query = "insert into Users(Full_Name, Username, Password, Email, Language, Gender, Phone_No, Image) values('$Full_Name', '$Username', '$Password', '$Email', 'English', '$Gender', '$Phone_No', '$Image')";
-                    if(mysqli_query($con, $insert_query)){
+				$insert_stmt = mysqli_prepare($con, "INSERT INTO Users(Full_Name, Username, Password, Email, Language, Gender, Phone_No, Image) VALUES(?, ?, ?, ?, 'English', ?, ?, ?)");
+					mysqli_stmt_bind_param($insert_stmt, "sssssss", $Full_Name, $Username, $Password, $Email, $Gender, $Phone_No, $Image);
+					if(mysqli_stmt_execute($insert_stmt)){
                         move_uploaded_file($Image_tmp, "assets/img/_ProfilePicture/$Image");
                         $msg = "Registration Successfull";
 
