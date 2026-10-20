@@ -249,6 +249,7 @@ else{
                 ?>" class="form-control" id="Result" placeholder="4th Answer">
                 </div>
               </div>
+              
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
                   <button type="button" class="btn " id = "btn-add-result" > Save Result </button>

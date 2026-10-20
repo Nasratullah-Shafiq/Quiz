@@ -368,7 +368,6 @@ body{
                     Print Result
 
                 </button>
-
                 <a
                     href="Exam.php?id=<?= $Subject_ID ?>"
                     class="btn btn-success custom-btn">

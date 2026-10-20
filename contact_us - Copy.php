@@ -15,6 +15,7 @@ include('./_Partial Components/Header.php');
                 </p>
             </div>
         </div>
+        
     </div>
 <?php 
 
