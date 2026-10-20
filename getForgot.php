@@ -10,3 +10,4 @@
 		$userforgo = $usr->forgotPassword($Username, $Email);
 	}
 ?>
+

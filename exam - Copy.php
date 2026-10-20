@@ -10,6 +10,7 @@ if (isset($_GET['id'])) {
     exit();
 }
 
+
 if (isset($_SESSION['Username'])) {
     $Username = $_SESSION['Username'];
     $UsersByUsername = $exm->getUsersByUsername($Username);

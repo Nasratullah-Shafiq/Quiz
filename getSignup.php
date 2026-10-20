@@ -13,4 +13,5 @@
 		
 		$userRegister = $usr->userRegistration($Full_Name, $Username, $Password, $Email, $Gender, $Phone_No);
 	}
+	
 ?>

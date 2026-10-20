@@ -12,6 +12,7 @@ include_once('./_Partial Components/link.php');
 <p class="p-forgot" > Insert your Email to reset your password </p>
 </div>
 
+
 <form method = "POST" action = "">
  <div class="form-group" >
 	<div class="input-group " style="padding-left: 10px;">
