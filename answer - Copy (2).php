@@ -11,7 +11,6 @@ $answer = $ans->answer($_POST);
 if(!isset($_SESSION['Username'])){
     header('Location: sign_in.php');
 }
-
 if(isset($_GET['id'])){
    
     $Subject_ID = $_GET['id'];
