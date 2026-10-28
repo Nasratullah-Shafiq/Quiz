@@ -246,6 +246,7 @@ else{
                     echo $percent;  
                     }
                     
+                    
                 ?>" class="form-control" id="Result" placeholder="4th Answer">
                 </div>
               </div>

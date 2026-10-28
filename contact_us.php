@@ -66,7 +66,6 @@ include('./_Partial Components/Header.php');
                             echo '<div class="alert alert-success">' . $msg . '</div>';
                         }
                     ?>
-                    
 
                     <!-- Full Name -->
                     <div class="row mb-3">
