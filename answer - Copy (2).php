@@ -12,7 +12,6 @@ if(!isset($_SESSION['Username'])){
     header('Location: sign_in.php');
 }
 if(isset($_GET['id'])){
-   
     $Subject_ID = $_GET['id'];
     $subjectByTime = $exm->getSubject($Subject_ID);
     $rowQuiz = $subjectByTime->fetch_assoc();
